@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <h1> customJIBsnake Score: {{score}} Highscore: {{highscore}}</h1>
+    <h1> SJukaste SNaken EU Score: {{score}} Highscore: {{highscore}}</h1>
     <button v-if="gameRunning == false" v-on:click="gameLoop()" > Start Game </button>
     <button v-on:click="stopLoop()">Stop Game </button>
     <v-stage ref="stage"
