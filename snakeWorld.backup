@@ -1,0 +1,138 @@
+<template>
+  <div id="container" style="background-color: black">
+    <!--<canvas id="game" width="900" height="900">
+
+    </canvas> -->
+    <h1> xAxis: {{xAxis}} yAxis: {{yAxis}}</h1>
+    <button v-on:click="gameLoop()"> Start Game </button>
+    <button v-on:click="stopLoop()">Stop Game </button>
+    <v-stage ref="stage"
+      :config="configKonva">
+      <v-layer ref="layer" :config="configMain">
+        <v-rect ref="snake" :config="configRect"></v-rect>
+      </v-layer>
+      <v-layer ref="dragLayer"></v-layer>
+    </v-stage>
+  </div>
+</template>
+
+<script>
+let vm = {};
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: String
+  },
+  data() {
+    return {
+      lastKey: '',
+      t: 0,
+      gameStart: false,
+      xAxis: 20,
+      snakeBody: [
+        {x: 150, y: 150},
+        {x: 140, y: 150},
+        {x: 130, y: 150},
+        {x: 120, y: 150},
+        {x: 110, y: 150}
+      ],
+      yAxis: 20,
+      widthS: 50,
+      foodX: Math.ceil(Math.random()*700),
+      foodY: Math.ceil(Math.random()*700),
+      configKonva: {
+        width: 900,
+        height: 600,
+        container: 'container'
+      },
+      configMain: {
+        fill: 'black'
+      },
+      configRect: {
+        x: 20,
+        y: 20,
+        draggable: true,
+        startScale: 10,
+        width: 20,
+        height: 20,
+        fill: 'red',
+        shadowBlur: 10
+      }
+    }
+  },
+  methods: {
+    gameLoop(){
+      const shape = vm.$refs.snake.getNode();
+      const stage = vm.$refs.stage.getNode();
+
+        this.t = setInterval(() => {
+          this.snakeMove(this.lastKey)
+          shape.setAttrs({
+            y: this.yAxis,
+            x: this.xAxis
+          });
+          stage.draw();
+        }, 100)
+    },
+    stopLoop(){
+      clearInterval(this.t)
+    },
+    updateCanvas(){
+      const stage = vm.$refs.stage.getNode();
+      const shape = vm.$refs.snake.getNode();
+
+      stage.draw();
+    },
+    snakeMove(e){
+      if (e.key == 'ArrowRight' && this.lastKey != "ArrowLeft") {
+        console.log(this.lastKey)
+        this.xAxis += 6
+      }else if (e.key == 'ArrowLeft') {
+        this.xAxis -= 6
+      }else if (e.key == 'ArrowUp') {
+        this.yAxis -= 6
+      }else if (e.key == 'ArrowDown') {
+        this.yAxis += 6
+      }
+    },
+    snakeEat(){
+      const shape = vm.$refs.snake.getNode();
+      this.widthS += 10
+      shape.setAttrs({
+        width: this.widthS,
+      });
+    },
+    randomFood(){
+      var canvas = document.getElementById('game'),
+          ctx = canvas.getContext('2d');
+      ctx.beginPath();
+      ctx.lineWidth = "3";
+      ctx.strokeStyle = "white";
+      ctx.rect(this.foodX, this.foodY, 20, 20);
+      //console.log(this.foodX, this.foodY)
+
+      ctx.stroke();
+    }
+  },
+  created() {
+    window.addEventListener('keydown', (e) => {
+      this.lastKey = e
+    });
+  },
+  mounted() {
+    vm = this
+    /*
+    this.updateCanvas(),
+    this.randomFood()
+  */}
+
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+#game {
+  background-color: black;
+}
+
+</style>
