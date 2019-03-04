@@ -1,6 +1,7 @@
 <template>
   <div id="container">
-    <h1> SJukaste SNaken EU Score: {{score}} Highscore: {{highscore}}</h1>
+    <h1>JIBsnake</h1>
+    <h1>Score: {{score}} Highscore: {{highscore}}</h1>
     <button v-if="gameRunning == false" v-on:click="gameLoop()" > Start Game </button>
     <button v-on:click="stopLoop()">Stop Game </button>
     <v-stage ref="stage"
@@ -32,7 +33,7 @@
 <script>
 /*eslint no-console: "off"*/
 let vm = {};
-const width = 1500;
+const width = 1493;
 const height = 700;
 
 export default {
@@ -62,7 +63,6 @@ export default {
       xAxis: 25,
       yAxis: 0,
       backgroundConfig: {
-        stroke: 'red',
         strokeWidth: 7,
         width: width,
         height: height,
@@ -117,7 +117,7 @@ export default {
       } else {
         this.snakeBody.pop()
       }
-      if (this.snakeBody[0].x < 0 || this.snakeBody[0].y < 0 || this.snakeBody[0].y > height - 25 || this.snakeBody[0].x > width - 25) {
+      if (this.snakeBody[0].x < 0 || this.snakeBody[0].y < 0 || this.snakeBody[0].y > height - 25 || this.snakeBody[0].x > width - 15) {
         this.endGame = true
         const text = vm.$refs.endText.getNode();
         text.setAttrs({
@@ -193,14 +193,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 #container {
+  font-family: 'Roboto', sans-serif;
   margin: auto;
   width: 1500px;
-  background-color: yellow;
+  border-style: solid;
+  border-color: #10ac84;
+  background-color: #353b48;
+  color: #227093;
 }
 
 div {
   border-style: solid;
+  color: #10ac84;
+
 }
 
 .konvajs-content {
