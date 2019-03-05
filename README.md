@@ -1,29 +1,23 @@
-# snake-game-browser
+# JIB-Snake
 
-## Project setup
-```
+Basic snake game written in VUE.js
+
+### Prerequisites
+
+Node
+
+
+### Installing
+
 npm install
-```
 
-### Compiles and hot-reloads for development
-```
 npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Built With
 
-### Run your tests
-```
-npm run test
-```
+* [VUE.js](https://vuejs.org) - JavaScript Framework
+* [Vue-Konva](https://github.com/konvajs/vue-konva) - Konva for VUE
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Acknowledgments
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* Yolo Swag
