@@ -23,6 +23,4 @@ npm run serve
 
 * Yolo Swag
 
-```
 ![Snake Game IMG](https://i.imgur.com/pyd7l43.png)
-```
