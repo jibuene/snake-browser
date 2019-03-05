@@ -25,7 +25,6 @@
           }"
         />
       </v-layer>
-      <v-layer ref="dragLayer"></v-layer>
     </v-stage>
   </div>
 </template>
@@ -40,7 +39,7 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      score: 1,
+      score: 0,
       highscore: 0,
       endGame: false,
       gameRunning: false,
@@ -48,7 +47,7 @@ export default {
       foodY: this.calcFood(height),
       foodX: this.calcFood(width),
       snakeBody: [
-        {x: 225, y: 150} /* TESTING
+        {x: 225, y: 150},
         {x: 200, y: 150},
         {x: 175, y: 150},
         {x: 150, y: 150},
@@ -56,7 +55,7 @@ export default {
         {x: 100, y: 150},
         {x: 75, y: 150},
         {x: 50, y: 150},
-        {x: 25, y: 150} */
+        {x: 25, y: 150}
       ],
       headOff: [],
       colors: ['red', 'blue', 'green'],
@@ -66,7 +65,7 @@ export default {
         strokeWidth: 7,
         width: width,
         height: height,
-        fill: 'black'
+        fill: "black"
       },
       canvasText: {
         text: '',
