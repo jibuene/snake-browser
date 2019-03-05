@@ -8,11 +8,12 @@ Node
 
 
 ### Installing
-
+```
 npm install
-
+```
+```
 npm run serve
-
+```
 ## Built With
 
 * [VUE.js](https://vuejs.org) - JavaScript Framework
